@@ -1,79 +1,116 @@
+/* New Content for About me */
+/* Global Styles */
 body {
-    /* Old browsers */
-    background: #141E30;
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(-45deg, #35577D, #141E30);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(-45deg, #35577D, #141E30);
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
     margin: 0;
     padding: 0;
+    background-color: #f8f9fa;
+    color: #333;
 }
 
-h1 {
-    font-family: Georgia;
-    color: #FFF;
-    font-size: 2em;
-    padding-top: 100px;
-    width: 100%;
+.about-container {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-h2 {
-    font-family: Georgia;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-    color: rgba(255, 255, 255, 0.5);
-    font-weight: 100;
-    font-size: 22px;
-    line-height: 24px;
-    padding-bottom: 30px;
-    text-align: left;
-    width: 70%;
+/* Section Headings */
+h1, h2 {
+    color: #2E294E;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
-p {
-    font-family: Helvetica;
-    color: aliceblue;
-    line-height: 1.3em;
-    text-align: left;
-    width: 100%;
+h2 button {
+    font-size: 0.8rem;
+    margin-left: 10px;
+    padding: 5px 10px;
+    background-color: #6f60aa;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-.byline {
-    font-family: Helvetica;
-    color: rgba(255, 255, 255, 0.5);
-    float: left;
-    font-size: 14px;
-    padding-left: 10px;
-    text-transform: uppercase;
+h2 button:hover {
+    background-color: #573d97;
 }
 
-.caption {
-    display: block;
-    font-family: 'Playfair Display', serif;
-    font-size: 14px;
-    font-style: italic;
-    line-height: 14px;
-    margin-left: 20px;
+/* Personal Information Section */
+#personal-info {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+#personal-info a {
+    color: #6f60aa;
+    text-decoration: none;
+}
+
+#personal-info a:hover {
+    text-decoration: underline;
+}
+
+/* News Section */
+#news ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+    display: none; /* Initially hidden */
+}
+
+#news ul li {
+    background: #eaeaea;
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+/* Publications Section */
+#publications .publication {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
     padding: 10px;
-    position: relative;
-    top: 80%;
-    width: 60%;
+    border-radius: 8px;
+    transition: transform 0.3s;
 }
 
-.content {
-    padding: 40px;
+#publications .publication:hover {
+    transform: scale(1.02);
 }
 
-.image {
-    background-image: url("https://content.codecademy.com/courses/web-101/unit-4/htmlcss1-img_soccer.jpeg");
-    background-size: cover;
-    background-position: center;
-    height: 300px;
+#publications img {
+    width: 150px;
+    height: auto;
+    margin-right: 15px;
+    border-radius: 8px;
 }
 
-.writer-img {
-    -webkit-box-shadow: 5px 0px 5px 0px rgba(0, 0, 50, 0.97);
-    -moz-box-shadow: 5px 0px 5px 0px rgba(0, 0, 50, 0.97);
-    box-shadow: 5px 0px 5px 0px rgba(0, 0, 50, 0.97);
-    float: left;
-    width: 50px;
+#publications .publication-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #2E294E;
 }
+
+#publications .publication-title:hover {
+    text-decoration: underline;
+}
+
+#publications .publication-authors,
+#publications .publication-abstract {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+#publications .publication-abstract {
+    margin-top: 5px;
+}
+
