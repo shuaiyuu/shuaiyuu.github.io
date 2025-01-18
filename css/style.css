@@ -114,3 +114,21 @@ h2 button:hover {
     margin-top: 5px;
 }
 
+/* ==========================================================sidebar
+ */
+
+/* Hide the sidebar on the About Me page */
+.page-about .sidebar {
+    display: none;
+}
+
+/* Adjust the content area to take up the full width */
+.page-about .content {
+    width: 100%;
+}
+
+/* Optional: Adjust margins or padding to make the page look better */
+.page-about .main {
+    margin-left: 0;
+    margin-right: 0;
+}
