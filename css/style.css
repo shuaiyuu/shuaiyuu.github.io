@@ -1,134 +1,100 @@
-/* New Content for About me */
-/* Global Styles */
+/* General styling */
 body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f8f9fa;
-    color: #333;
+    line-height: 1.6;
+    background-color: #f4f4f9;
 }
 
-.about-container {
-    max-width: 1000px;
-    margin: 20px auto;
+.container {
+    width: 90%;
+    margin: 0 auto;
     padding: 20px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Section Headings */
+/* Headings */
 h1, h2 {
     color: #2E294E;
-    margin-bottom: 20px;
-    text-align: center;
+    margin-bottom: 15px;
 }
 
-h2 button {
-    font-size: 0.8rem;
-    margin-left: 10px;
-    padding: 5px 10px;
-    background-color: #6f60aa;
+/* News section */
+.news-section button {
+    background-color: #2E294E;
     color: white;
     border: none;
-    border-radius: 5px;
+    padding: 10px 15px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    font-size: 1em;
+    border-radius: 5px;
+    margin-bottom: 10px;
 }
 
-h2 button:hover {
-    background-color: #573d97;
+.news-section button:hover {
+    background-color: #6f60aa;
 }
 
-/* Personal Information Section */
-#personal-info {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-#personal-info a {
-    color: #6f60aa;
-    text-decoration: none;
-}
-
-#personal-info a:hover {
-    text-decoration: underline;
-}
-
-/* News Section */
-#news ul {
+.news-section ul {
     list-style: none;
     padding: 0;
-    margin-top: 20px;
-    display: none; /* Initially hidden */
 }
 
-#news ul li {
-    background: #eaeaea;
+.news-section li {
     margin-bottom: 10px;
-    padding: 10px 15px;
+    padding: 10px;
+    border-left: 4px solid #2E294E;
+    background: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Publications section */
+.publications {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.publication {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 10px;
+    background: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
 }
 
-/* Publications Section */
-#publications .publication {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    padding: 10px;
-    border-radius: 8px;
-    transition: transform 0.3s;
-}
-
-#publications .publication:hover {
-    transform: scale(1.02);
-}
-
-#publications img {
+.publication img {
     width: 150px;
-    height: auto;
-    margin-right: 15px;
-    border-radius: 8px;
+    height: 150px;
+    object-fit: cover;
+    border: 2px solid #ccc;
+    border-radius: 5px;
 }
 
-#publications .publication-title {
-    font-size: 1.1rem;
+.publication-details {
+    flex-grow: 1;
+}
+
+.publication-title {
     font-weight: bold;
     margin-bottom: 5px;
-    color: #2E294E;
+    font-size: 1.2em;
 }
 
-#publications .publication-title:hover {
-    text-decoration: underline;
+.publication-authors, .publication-abstract {
+    margin: 5px 0;
+    font-size: 0.9em;
 }
 
-#publications .publication-authors,
-#publications .publication-abstract {
-    font-size: 0.9rem;
-    color: #555;
+/* Fix publication layout consistency */
+.publication img {
+    flex-shrink: 0;
 }
 
-#publications .publication-abstract {
-    margin-top: 5px;
-}
-
-/* ==========================================================sidebar
- */
-
-/* Hide the sidebar on the About Me page */
-.page-about .sidebar {
-    display: none;
-}
-
-/* Adjust the content area to take up the full width */
-.page-about .content {
-    width: 100%;
-}
-
-/* Optional: Adjust margins or padding to make the page look better */
-.page-about .main {
-    margin-left: 0;
-    margin-right: 0;
+.publication-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
