@@ -1,4 +1,6 @@
 /* ── Butterfly search modal overrides 重新定义 css 文件，override 原有butterfly主题的search css──────────── */
+/* DEBUG – 下面👇一行用于测试debug */
+#local-search .search-dialog { background:#ffefd5!important; }
 
 #local-search .search-dialog {
     max-width: 650px;          /* wider box */
