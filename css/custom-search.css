@@ -1,0 +1,46 @@
+/* ── Butterfly search modal overrides 重新定义 css 文件，override 原有butterfly主题的search css──────────── */
+
+#local-search .search-dialog {
+    max-width: 650px;          /* wider box */
+    border-radius: 12px;       /* large rounded corners */
+    box-shadow: 0 20px 45px rgba(0,0,0,.25);
+    background: rgba(255,255,255,0.9);      /* glass-like */
+    backdrop-filter: blur(12px);            /* frosted glass */
+    animation: scaleIn .35s ease;
+}
+
+/* Title field */
+#local-search .search-dialog__title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #4b4b4b;
+}
+
+/* Input */
+#local-search-input {
+    font-size: 1rem;
+    padding: 0.6rem 0.9rem;
+    border: 1px solid #dadada;
+    border-radius: 6px;
+}
+
+/* Result list */
+#local-search .search-result-list {
+    margin-top: 1rem;
+    max-height: 320px;
+    overflow-y: auto;
+}
+#local-search .search-result-list li {
+    padding: 0.55rem 0;
+    border-bottom: 1px solid #efefef;
+    transition: background .2s;
+}
+#local-search .search-result-list a:hover {
+    background: #f5f7ff;
+}
+
+/* open / close animation */
+@keyframes scaleIn{
+    0%   {transform: translate(-50%,-50%) scale(.8); opacity:0;}
+    100% {transform: translate(-50%,-50%) scale(1); opacity:1;}
+}
