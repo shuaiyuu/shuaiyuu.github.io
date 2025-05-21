@@ -3,47 +3,104 @@
 /* DEBUG – 下面👇一行用于测试debug */
 /*#local-search .search-dialog { background:#ffefd5!important; }*/
 
-#local-search .search-dialog {
-    max-width: 650px;          /* wider box */
-    border-radius: 12px;       /* large rounded corners */
-    box-shadow: 0 20px 45px rgba(0,0,0,.25);
-    background: rgba(255,255,255,0.9);      /* glass-like */
-    backdrop-filter: blur(12px);            /* frosted glass */
-    animation: scaleIn .35s ease;
+/* ─────  Local-search modal — refined styling  ───── */
+
+/* 1—Dialog card */
+#local-search .search-dialog{
+    position: fixed;           /* ensure true centering */
+    top:50%; left:50%;
+    transform:translate(-50%,-50%);
+    width:clamp(300px, 92vw, 680px);
+    border-radius:14px!important;
+    background:rgba(255,255,255,.85);        /* light glass */
+    backdrop-filter: blur(18px) saturate(160%);
+    box-shadow:0 24px 48px rgba(0,0,0,.28);
+    padding:2.1rem 2.2rem 2.3rem;            /* room for content */
+    animation:fadeSlide .35s ease-out;
 }
 
-/* Title field */
-#local-search .search-dialog__title {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #4b4b4b;
+/* 2—Close icon (bigger, easier tap target) */
+#local-search .search-dialog-close{
+    top:.9rem; right:.9rem;
+    font-size:1.45rem!important;
+    opacity:.65;
+    transition:opacity .2s;
+}
+#local-search .search-dialog-close:hover{opacity:.95}
+
+/* 3—Title */
+#local-search .search-dialog__title{
+    margin-bottom:.85rem;
+    font-size:1.3rem;
+    font-weight:600;
+    color:#333;
 }
 
-/* Input */
-#local-search-input {
-    font-size: 1rem;
-    padding: 0.6rem 0.9rem;
-    border: 1px solid #dadada;
-    border-radius: 6px;
+/* 4—Search input */
+#local-search-input{
+    width:100%!important;
+    padding:.65rem 1rem;
+    font-size:1rem;
+    border:2px solid #cfcfcf;
+    border-radius:8px;
+    transition:border .2s, box-shadow .2s;
+}
+#local-search-input:focus{
+    border-color:#49b1f5;
+    box-shadow:0 0 0 3px rgba(73,177,245,.25);
+    outline:0;
 }
 
-/* Result list */
-#local-search .search-result-list {
-    margin-top: 1rem;
-    max-height: 320px;
-    overflow-y: auto;
+/* 5—Result list */
+#local-search .search-result-list{
+    margin-top:1.25rem;
+    max-height:330px;
+    overflow-y:auto;
+    scrollbar-width:thin;
 }
-#local-search .search-result-list li {
-    padding: 0.55rem 0;
-    border-bottom: 1px solid #efefef;
-    transition: background .2s;
+#local-search .search-result-list li{
+    padding:.6rem 0;
+    border-bottom:1px solid #ececec;
 }
-#local-search .search-result-list a:hover {
-    background: #f5f7ff;
+#local-search .search-result-list a{
+    text-decoration:none;
+    color:#333;
+}
+#local-search .search-result-list a:hover{
+    background:#f2f8ff;
+    color:#1967d2;
+}
+#local-search .search-result-list .search-keyword{
+    color:#e26b00;
+    font-weight:700;
 }
 
-/* open / close animation */
-@keyframes scaleIn{
-    0%   {transform: translate(-50%,-50%) scale(.8); opacity:0;}
-    100% {transform: translate(-50%,-50%) scale(1); opacity:1;}
+/* 6—Dark-mode match */
+@media(prefers-color-scheme:dark){
+    #local-search .search-dialog{
+        background:rgba(40,40,42,.9);
+        box-shadow:0 24px 48px rgba(0,0,0,.55);
+    }
+    #local-search .search-dialog__title{color:#e6e6e6}
+    #local-search-input{
+        background:#2b2b2d;
+        border-color:#555;
+        color:#ddd;
+    }
+    #local-search-input:focus{
+        border-color:#49b1f5;
+        box-shadow:0 0 0 3px rgba(73,177,245,.24);
+    }
+    #local-search .search-result-list a{color:#d5d5d5}
+    #local-search .search-result-list a:hover{
+        background:#26324a;
+        color:#87c5ff;
+    }
+    #local-search .search-result-list li{border-color:#424242}
+}
+
+/* 7—Entry & exit */
+@keyframes fadeSlide{
+    0%{transform:translate(-50%,-56%) scale(.92); opacity:0}
+    100%{transform:translate(-50%,-50%) scale(1); opacity:1}
 }
