@@ -7,17 +7,20 @@
 
 /* 1—Dialog card */
 #local-search .search-dialog{
-    position: fixed;           /* ensure true centering */
-    top:50%; left:50%;
-    transform:translate(-50%,-50%);
-    width:clamp(300px, 92vw, 680px);
-    border-radius:14px!important;
-    background:rgba(255,255,255,.85);        /* light glass */
+    position: fixed !important;
+    inset: 0;                               /* full-screen box model */
+    margin: auto;                           /* centres both axes */
+    width: clamp(300px, 92vw, 680px);
+    height: fit-content;
+    transform: none !important;             /* cancel JS translate */
+    /* ---- visual polish ---- */
+    border-radius: 14px;
+    background: rgba(255,255,255,.85);
     backdrop-filter: blur(18px) saturate(160%);
     box-shadow:0 24px 48px rgba(0,0,0,.28);
-    padding:2.1rem 2.2rem 2.3rem;            /* room for content */
-    animation:fadeSlide .35s ease-out;
+    animation: fadeIn .3s ease-out;
 }
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
 
 /* 2—Close icon (bigger, easier tap target) */
 #local-search .search-dialog-close{
@@ -103,4 +106,89 @@
 @keyframes fadeSlide{
     0%{transform:translate(-50%,-56%) scale(.92); opacity:0}
     100%{transform:translate(-50%,-50%) scale(1); opacity:1}
+}
+
+
+
+
+
+
+
+
+/* ─── FINAL OVERRIDES : always win ─── */
+
+#local-search .search-dialog{
+    position:fixed !important;    /* no jump */
+    inset:0 !important;
+    margin:auto !important;
+    width:clamp(300px,92vw,680px) !important;
+    border-radius:14px !important;
+    background:rgba(255,255,255,.88) !important;
+    backdrop-filter:blur(18px) saturate(160%) !important;
+    box-shadow:0 24px 48px rgba(0,0,0,.28) !important;
+    animation:fadeIn .3s ease-out !important;
+}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+#local-search .search-dialog__title{
+    font-size:1.3rem !important;
+    font-weight:600 !important;
+    color:#333 !important;
+    margin-bottom:.9rem !important;
+}
+
+#local-search-input{
+    width:100% !important;
+    font-size:1rem !important;
+    padding:.65rem 1rem !important;
+    border:2px solid #cfcfcf !important;
+    border-radius:8px !important;
+    transition:border .2s,box-shadow .2s !important;
+}
+#local-search-input:focus{
+    border-color:#49b1f5 !important;
+    box-shadow:0 0 0 3px rgba(73,177,245,.25) !important;
+    outline:0 !important;
+}
+
+#local-search .search-result-list{
+    margin-top:1.2rem !important;
+    max-height:330px !important;
+    overflow-y:auto !important;
+}
+#local-search .search-result-list li{
+    padding:.6rem 0 !important;
+    border-bottom:1px solid #ececec !important;
+}
+#local-search .search-result-list a{
+    text-decoration:none !important;
+    color:#333 !important;
+}
+#local-search .search-result-list a:hover{
+    background:#f3f7ff !important;
+    color:#1967d2 !important;
+}
+#local-search .search-result-list .search-keyword{
+    color:#e26b00 !important;
+    font-weight:700 !important;
+}
+
+/* dark-mode match */
+@media(prefers-color-scheme:dark){
+    #local-search .search-dialog{
+        background:rgba(40,40,42,.92) !important;
+        box-shadow:0 24px 48px rgba(0,0,0,.55) !important;
+    }
+    #local-search .search-dialog__title{color:#e6e6e6 !important;}
+    #local-search-input{
+        background:#262628 !important;
+        border-color:#555 !important;
+        color:#ddd !important;
+    }
+    #local-search .search-result-list a{color:#d7d7d7 !important;}
+    #local-search .search-result-list a:hover{
+        background:#26324a !important;
+        color:#87c5ff !important;
+    }
+    #local-search .search-result-list li{border-color:#3f3f3f !important;}
 }
