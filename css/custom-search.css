@@ -2,11 +2,10 @@
 
 /* DEBUG – 下面👇一行用于测试debug */
 /*#local-search .search-dialog{background:#ffff33 !important;}*/
-/* === accent recolour (affects progress bar, buttons, etc.) === */
-/*:root{*/
-/*    --default-bg-color: #FFCA3A;   !* amber *!*/
-/*    --scrollbar-color : #FFCA3A;   !* keeps scrollbars consistent *!*/
-/*}*/
+/* 下面⬇️添加root规则，调整所有页面的scrollbar颜色 */
+:root{
+    /*--default-bg-color: #FFCA3A;   !* amber *!*/
+    --scrollbar-color : #886ea5;   /* keeps scrollbars consistent */}
 
 
 body #local-search .search-dialog{
@@ -14,7 +13,7 @@ body #local-search .search-dialog{
     position:fixed !important;
     inset:0 !important;
     margin:auto !important;
-    width:clamp(300px,92vw,680px) !important;
+    width:clamp(360px,94vw,720px) !important;
     height:fit-content !important;
     transform:none !important;
 
@@ -65,7 +64,7 @@ body #local-search-input input:focus{
 /* container stays scrollable */
 body #local-search-results{
     margin-top:1.2rem !important;
-    max-height:330px !important;
+    max-height:530px !important;
     overflow-y:auto !important;
     scrollbar-width:thin !important;
 }
@@ -99,7 +98,7 @@ body #local-search-results{
     border-radius:10px;
 }
 
-/* 这里控制最下方搜索结果，例如“3 results found” bottom stats line*/
+/* 这里控制最下方文字，例如“3 results found” */
 body #local-search .search-dialog .search-result-stats{
     color:#EAEAF1 !important;    /* near-white so it pops */
     font-size:.85rem;
@@ -108,7 +107,17 @@ body #local-search .search-dialog .search-result-stats{
 }
 
 
-body #local-search-results .search-progress,
-body #local-search-results progress{
+/* 最后─── 👇 去除搜索结果的scrollbar！ kill the horizontal scrollbar inside results ─── */
+#local-search-results,
+#local-search-results .local-search-hit-item{
+    overflow-x:hidden; overflow-y:hidden !important;    /* no x/y-scroll => no bar */}
+/* ─── hide ALL scrollbars in the popup but keep scrolling ─── */
+#local-search .search-dialog,                 /* outer card          */
+#local-search .search-dialog * {              /* every descendant    */
+    scrollbar-width:none !important;            /* Firefox             */
+}
+#local-search .search-dialog::-webkit-scrollbar,
+#local-search .search-dialog *::-webkit-scrollbar{
+    width:0 !important; height:0 !important;    /* Chrome / Safari     */
     display:none !important;
 }
