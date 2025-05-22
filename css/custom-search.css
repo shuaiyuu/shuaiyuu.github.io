@@ -2,31 +2,48 @@
 
 /* DEBUG – 下面👇一行用于测试debug */
 /*#local-search .search-dialog{background:#ffff33 !important;}*/
-/*#local-search .search-dialog { outline:4px solid hotpink !important; }*/
+/* === accent recolour (affects progress bar, buttons, etc.) === */
+/*:root{*/
+/*    --default-bg-color: #FFCA3A;   !* amber *!*/
+/*    --scrollbar-color : #FFCA3A;   !* keeps scrollbars consistent *!*/
+/*}*/
 
 
 body #local-search .search-dialog{
+    /* positioning & size stay the same */
     position:fixed !important;
     inset:0 !important;
     margin:auto !important;
     width:clamp(300px,92vw,680px) !important;
     height:fit-content !important;
     transform:none !important;
-}
-body #local-search .search-dialog{
-    border-radius:14px !important;
-    background:rgba(255,255,255,.86) !important;
-    backdrop-filter:blur(18px) saturate(160%) !important;
-    box-shadow:0 24px 48px rgba(0,0,0,.28) !important;
+
+    /* 当前版本配色，整个搜索框背景颜色 线形渐变 135度 */
+    background:linear-gradient(135deg,
+    rgba(46, 41, 78, 0.72)   0%,   /* #2E294E */
+    rgba(111, 96,170, 0.72) 100%); /* #6F60AA */
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:16px;
+    backdrop-filter:blur(22px) saturate(170%);
+    box-shadow:0 26px 48px rgba(0,0,0,0.32);
 }
 
-/*!* — Title — *!*/
+/* ───────── Title ───────── */
 body #local-search .search-dialog-title{
-    margin-bottom:.85rem;
-    font-size:1.3rem;
+    margin-bottom:1rem;
+    font-size:1.4rem;
     font-weight:600;
-    color:#333;
+    letter-spacing:0.3px;
+    color:#F3F4FB;                 /* near-white for contrast */
+    text-shadow:0 1px 3px rgba(0,0,0,0.35);
 }
+
+/*👇 调整剪刀✂️和虚线，函数设置为 display:none; content:none 则去除这两个东西*/
+body #local-search .search-dialog hr{border:none; border-top:2px dashed rgba(255,255,255,.28) !important;
+    margin:1rem 0 !important; position:relative; }
+body #local-search .search-dialog hr::before{ content:"✂"; position:absolute;
+    left:.5rem; top:-.55rem; font-size:1.15rem; color:rgba(255,255,255,.55); }
+
 
 /* — Input — */
 body #local-search-input input{
@@ -38,32 +55,60 @@ body #local-search-input input{
     transition:border .2s,box-shadow .2s !important;
 }
 body #local-search-input input:focus{
-    border-color:#49b1f5 !important;
-    box-shadow:0 0 0 3px rgba(73,177,245,.25) !important;
+    border-color: #f6c74a !important;
+    box-shadow:0 0 0 3px rgba(245, 191, 73, 0.25) !important;
     outline:0 !important;
 }
 
+
 /* ---------- result list ---------- */
+/* container stays scrollable */
 body #local-search-results{
     margin-top:1.2rem !important;
     max-height:330px !important;
     overflow-y:auto !important;
     scrollbar-width:thin !important;
 }
+/* each hit */
 body #local-search-results li{
-    padding:.6rem 0 !important;
-    border-bottom:1px solid #ececec !important;
+    padding:.7rem .6rem !important;
+    border-bottom:1px solid rgba(255,255,255,0.12) !important;
 }
+/* whole anchor = click target */
 body #local-search-results a{
+    display:block;
+    color:#EAEAF1 !important;               /* near-white text */
     text-decoration:none !important;
-    color:#333 !important;
 }
+/* hover state */
 body #local-search-results a:hover{
-    background:#f2f8ff !important;
-    color:#1967d2 !important;
+    background:rgba(255,255,255,0.08) !important;
+    color:#FFCA3A !important;               /* matches focus ring */
 }
+/* highlighted keywords inside snippet */
 body #local-search-results .search-keyword{
-    color:#e26b00 !important;
+    color:#FFCA3A !important;
     font-weight:700 !important;
+    background:rgba(255,202,58,0.18);
+    border-radius:3px; padding:0 2px;
 }
 
+/*⬇️将search框的 预览结果 用一个灰色的方框套住*/
+body #local-search-results{
+    background:rgba(255,255,255,0.05);
+    border-radius:10px;
+}
+
+/* 这里控制最下方搜索结果，例如“3 results found” bottom stats line*/
+body #local-search .search-dialog .search-result-stats{
+    color:#EAEAF1 !important;    /* near-white so it pops */
+    font-size:.85rem;
+    letter-spacing:.2px;
+    margin-top:.3rem;
+}
+
+
+body #local-search-results .search-progress,
+body #local-search-results progress{
+    display:none !important;
+}
