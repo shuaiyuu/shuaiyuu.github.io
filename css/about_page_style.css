@@ -6,11 +6,11 @@
 #body-wrap::before{
     content:'';
     position:fixed; inset:0;
-    background:linear-gradient(135deg,#ffecd2 0%, #fcb69f 100%);
-    z-index:-2;            /* ribbon canvas stays at  -1  => visible */
+    background:
+    center/contain no-repeat;  /* linear-gradient(135deg,#ffecd2 0%, #fcb69f 100%)*/
+    z-index:-2;            /* ribbon canvas stays at  -1  => 而z-index:-2 意味着背景堆叠顺序被调整在最后 */
     pointer-events:none;
 }
-
 
 
 
