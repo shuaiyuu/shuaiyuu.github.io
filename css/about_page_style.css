@@ -17,7 +17,10 @@ body {
 h1, h2 {
     color: #2E294E;
     margin-bottom: 15px;
+    margin-top: 1rem;
 }
+/*补充*/
+h1{margin-top: 0rem;}
 
 /* News section */
 .news-section button {
