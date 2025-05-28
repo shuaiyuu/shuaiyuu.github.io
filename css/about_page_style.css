@@ -1,3 +1,28 @@
+/*!* ========== About page only – 控制中间部分背景颜色—— 全局部分 ========== *!*/
+/* 1. Kill the purple background that comes from the global setting */
+#body-wrap{
+    background:url("https://pub-8d089020feb743daaa08d3ca7e5bdcc6.r2.dev/A-sercet-forever-2023-294-21666.jpg");
+}
+/* 2.  If your theme adds a dark overlay via a pseudo-element, neutralise it */
+#body-wrap::before{
+    background:none !important;   /* remove the mask, if you see one */
+}
+
+
+
+/*!* ========== About page only – 控制中间部分背景颜色—— 带文字部分 ========== *!*/
+/*!* Paint the whole middle band *!*/
+/*#content-inner{*/
+/*    background:linear-gradient(135deg,#ffecd2 0%, #fcb69f 100%);*/
+/*}*/
+
+/*!* Remove the white card so the gradient is visible *!*/
+/*#page{*/
+/*    background:transparent;*/
+/*    box-shadow:none;   !* optional – drop the default shadow *!*/
+/*}*/
+
+
 /* General styling */
 body {
     font-family: Arial, sans-serif;
@@ -61,8 +86,8 @@ h1{margin-top: 0rem;}
 .publication {
     display: flex;
     align-items: flex-start;
-    gap: 20px;
-    padding: 10px;
+    gap: 30px;
+    padding: 20px;
     background: #ffffff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
@@ -72,8 +97,8 @@ h1{margin-top: 0rem;}
     width: 150px;
     height: 150px;
     object-fit: cover;
-    border: 2px solid #ccc;
-    border-radius: 5px;
+    border: 0.001px solid #ccc; /*控制每个出版物图片的边框*/
+    border-radius: 0.001px; /*控制边框倒角，数值拉满，将从矩形图片变为圆形*/
 }
 
 .publication-details {
@@ -102,8 +127,4 @@ h1{margin-top: 0rem;}
     justify-content: center;
 }
 
-.page-about #content-inner{
-    background:linear-gradient(135deg,#ffecd2 0%, #fcb69f 100%);
-    box-shadow:none;          /* optional: remove default card shadow */
-}
 
