@@ -1,12 +1,16 @@
 /*!* ========== About page only – 控制中间部分背景颜色—— 全局部分 ========== *!*/
-/* 1. Kill the purple background that comes from the global setting */
-#body-wrap{
-    background:url("https://pub-8d089020feb743daaa08d3ca7e5bdcc6.r2.dev/A-sercet-forever-2023-294-21666.jpg");
-}
-/* 2.  If your theme adds a dark overlay via a pseudo-element, neutralise it */
+/* About page only */
+#body-wrap{ background:transparent !important; }
+
+/* new gradient layer BELOW the ribbon canvas */
 #body-wrap::before{
-    background:none !important;   /* remove the mask, if you see one */
+    content:'';
+    position:fixed; inset:0;
+    background:linear-gradient(135deg,#ffecd2 0%, #fcb69f 100%);
+    z-index:-2;            /* ribbon canvas stays at  -1  => visible */
+    pointer-events:none;
 }
+
 
 
 
