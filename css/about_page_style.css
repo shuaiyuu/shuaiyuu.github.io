@@ -101,3 +101,9 @@ h1{margin-top: 0rem;}
     flex-direction: column;
     justify-content: center;
 }
+
+.page-about #content-inner{
+    background:linear-gradient(135deg,#ffecd2 0%, #fcb69f 100%);
+    box-shadow:none;          /* optional: remove default card shadow */
+}
+
