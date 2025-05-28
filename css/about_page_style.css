@@ -1,5 +1,6 @@
 /*!* ========== About page only – 控制中间部分背景颜色—— 全局部分 ========== *!*/
 /* About page only */
+
 #body-wrap{ background:transparent !important; }
 
 /* new gradient layer BELOW the ribbon canvas */
