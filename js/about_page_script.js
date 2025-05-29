@@ -28,8 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
         .setView([20,0], 2);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
         { maxZoom:6 }).addTo(map);
-    // add one test marker so you know it works
-    L.marker([31.2, 121.5]).addTo(map);
 
     // 2. pin THIS visitor (first time only)
     if (!localStorage.getItem('about-visit-pinned')) {
