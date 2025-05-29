@@ -132,3 +132,33 @@ h1{margin-top: 0rem;}
 }
 
 
+
+
+/* ==== Visitors map section ==== */
+#about-map{
+    margin-top:2.5rem;
+    text-align:center;
+}
+#map-container{
+    max-width:900px;
+    margin:0 auto;
+    border-radius:12px;
+    overflow:hidden;            /* round the map corners          */
+    box-shadow:0 12px 24px rgba(0,0,0,.15);
+}
+#leaflet-map{
+    height:420px;               /* feel free to adjust            */
+    width:100%;
+}
+.map-hint{
+    font-size:.9rem;
+    margin-bottom:.6rem;
+    opacity:.7;
+}
+/*!* optional – theme-coloured marker icons *!*/
+/*.leaflet-div-icon{*/
+/*    background:#FFCA3A;*/
+/*    border:none;*/
+/*    border-radius:50%;*/
+/*    width:10px; height:10px;*/
+/*}*/
