@@ -46,15 +46,31 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function geoErr () {
-            fetch('https://ipinfo.io/json?token==9f57fa21fc6bd0')
-                .then(r => r.json())
+            fetch('https://ipinfo.io/json?token=9f57fa21fc6bd0')
+                .then(r => {
+                    if (!r.ok) throw new Error('ipinfo ' + r.status);
+                    return r.json();
+                })
                 .then(d => {
                     const [lat, lon] = d.loc.split(',');
                     pinHere(lat, lon);
                 })
-                .catch(()=>{/* quiet fail */});
+                .catch(err => console.warn('Geo-fallback failed:', err));
         }
     }
+
+    Promise.race([
+        new Promise(res => navigator.geolocation &&
+            navigator.geolocation.getCurrentPosition(
+                p => res([p.coords.latitude, p.coords.longitude]),
+                () => res(null), { timeout:4000 })),
+        fetch('https://ipapi.co/json/')
+            .then(r => r.ok ? r.json() : null)
+            .then(d => d ? [d.latitude, d.longitude] : null)
+    ]).then(pos => {
+        if (pos) pinHere(...pos);
+        else console.info('Visitor location unavailable');
+    });
     // 3. load seeds (optional starter dots)
     const seeds = [
         [31.2, 121.5],  // Shanghai
