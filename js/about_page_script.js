@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function geoErr () {
-            fetch('https://api.ipinfo.io/lite/8.8.8.8?token=9f57fa21fc6bd0')
+            fetch('https://ipinfo.io/json?token==9f57fa21fc6bd0')
                 .then(r => r.json())
                 .then(d => {
                     const [lat, lon] = d.loc.split(',');
