@@ -13,19 +13,18 @@
     pointer-events:none;
 }
 
+/*!*!* ========== About page only – 控制中间部分背景颜色—— 带文字部分 ========== *!*!*/
+/*!*!* Paint the whole middle band *!*!*/
+/*#content-inner{*/
+/*    background:linear-gradient(135deg,#ffecd2 0%, #fcb69f 100%);*/
+/*}*/
 
+/*!* Remove the white card so the gradient is visible *!*/
+/*#page{*/
+/*    background:transparent;*/
+/*    box-shadow:none;   !* optional – drop the default shadow *!*/
+/*}*/
 
-/*!* ========== About page only – 控制中间部分背景颜色—— 带文字部分 ========== *!*/
-/*!* Paint the whole middle band *!*/
-#content-inner{
-    background:linear-gradient(135deg,#ffecd2 0%, #fcb69f 100%);
-}
-
-/* Remove the white card so the gradient is visible */
-#page{
-    background:transparent;
-    box-shadow:none;   /* optional – drop the default shadow */
-}
 
 
 /* General styling */
