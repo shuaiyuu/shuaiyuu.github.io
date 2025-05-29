@@ -1,4 +1,4 @@
-
+// ========= News部分的 Hidden 按钮 =========
 document.addEventListener('DOMContentLoaded', () => {
     const toggleNewsButton = document.getElementById('toggle-news');
     const newsList = document.getElementById('news-list');
@@ -20,11 +20,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-/* ========= Visitors Map logic ========= */
+/* ========= 🌍访客地图组件 ========= */
 document.addEventListener('DOMContentLoaded', () => {
 
     // 1. init map
-    const map = L.map('leaflet-map', { zoomControl:false })
+    const map = L.map('leaflet-map', { zoomControl:false, attributionControl:false })
         .setView([20,0], 2);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
         { maxZoom:6 }).addTo(map);
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function geoErr () {
-            fetch('https://ipinfo.io/json?token=9f57fa21fc6bd0')
+            fetch('https://api.ipinfo.io/lite/8.8.8.8?token=9f57fa21fc6bd0')
                 .then(r => r.json())
                 .then(d => {
                     const [lat, lon] = d.loc.split(',');

@@ -50,7 +50,6 @@ h1, h2 {
 }
 /*补充*/
 h1{margin-top: 0rem;}
-
 /* News section */
 .news-section button {
     background-color: #2E294E;
@@ -62,16 +61,13 @@ h1{margin-top: 0rem;}
     border-radius: 5px;
     margin-bottom: 10px;
 }
-
 .news-section button:hover {
     background-color: #6f60aa;
 }
-
 .news-section ul {
     list-style: none;
     padding: 0;
 }
-
 .news-section li {
     margin-bottom: 10px;
     padding: 10px;
@@ -80,13 +76,13 @@ h1{margin-top: 0rem;}
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+
 /* Publications section */
 .publications {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
-
 .publication {
     display: flex;
     align-items: flex-start;
@@ -96,7 +92,6 @@ h1{margin-top: 0rem;}
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
 }
-
 .publication img {
     width: 150px;
     height: 150px;
@@ -104,27 +99,22 @@ h1{margin-top: 0rem;}
     border: 0.001px solid #ccc; /*控制每个出版物图片的边框*/
     border-radius: 0.001px; /*控制边框倒角，数值拉满，将从矩形图片变为圆形*/
 }
-
 .publication-details {
     flex-grow: 1;
 }
-
 .publication-title {
     font-weight: bold;
     margin-bottom: 5px;
     font-size: 1.2em;
 }
-
 .publication-authors, .publication-abstract {
     margin: 5px 0;
     font-size: 0.9em;
 }
-
 /* Fix publication layout consistency */
 .publication img {
     flex-shrink: 0;
 }
-
 .publication-details {
     display: flex;
     flex-direction: column;
@@ -134,10 +124,10 @@ h1{margin-top: 0rem;}
 
 
 
-/* ==== Visitors map section ==== */
+/* ==== 🌍 访客地图部分 CSS ==== */
 #about-map{
     margin-top:2.5rem;
-    text-align:center;
+    text-align:left;
 }
 #map-container{
     max-width:900px;
@@ -153,12 +143,12 @@ h1{margin-top: 0rem;}
 .map-hint{
     font-size:.9rem;
     margin-bottom:.6rem;
-    opacity:.7;
+    opacity:.99;
 }
-/*!* optional – theme-coloured marker icons *!*/
-/*.leaflet-div-icon{*/
-/*    background:#FFCA3A;*/
-/*    border:none;*/
-/*    border-radius:50%;*/
-/*    width:10px; height:10px;*/
-/*}*/
+/* 调整地图中小方框为 紫色圆点 */
+.leaflet-div-icon{
+    background: #a873cd;
+    border:none;
+    border-radius:50%;
+    width:10px; height:10px;
+}
