@@ -1,0 +1,123 @@
+/* ── Butterfly search modal overrides 重新定义 css 文件，override 原有butterfly主题的search css──────────── */
+
+/* DEBUG – 下面👇一行用于测试debug */
+/*#local-search .search-dialog{background:#ffff33 !important;}*/
+/* 下面⬇️添加root规则，调整所有页面的scrollbar颜色 */
+:root{
+    /*--default-bg-color: #FFCA3A;   !* amber *!*/
+    --scrollbar-color : #886ea5;   /* keeps scrollbars consistent */}
+
+
+body #local-search .search-dialog{
+    /* positioning & size stay the same */
+    position:fixed !important;
+    inset:0 !important;
+    margin:auto !important;
+    width:clamp(360px,94vw,720px) !important;
+    height:fit-content !important;
+    transform:none !important;
+
+    /* 当前版本配色，整个搜索框背景颜色 线形渐变 135度 */
+    background:linear-gradient(135deg,
+    rgba(46, 41, 78, 0.72)   0%,   /* #2E294E */
+    rgba(111, 96,170, 0.72) 100%); /* #6F60AA */
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:16px;
+    backdrop-filter:blur(22px) saturate(170%);
+    box-shadow:0 26px 48px rgba(0,0,0,0.32);
+}
+
+/* ───────── Title ───────── */
+body #local-search .search-dialog-title{
+    margin-bottom:1rem;
+    font-size:1.4rem;
+    font-weight:600;
+    letter-spacing:0.3px;
+    color:#F3F4FB;                 /* near-white for contrast */
+    text-shadow:0 1px 3px rgba(0,0,0,0.35);
+}
+
+/*👇 调整剪刀✂️和虚线，函数设置为 display:none; content:none 则去除这两个东西*/
+body #local-search .search-dialog hr{border:none; border-top:2px dashed rgba(255,255,255,.28) !important;
+    margin:1rem 0 !important; position:relative; }
+body #local-search .search-dialog hr::before{ content:"✂"; position:absolute;
+    left:.5rem; top:-.55rem; font-size:1.15rem; color:rgba(255,255,255,.55); }
+
+
+/* — Input — */
+body #local-search-input input{
+    width:100% !important;
+    padding:.65rem 1rem !important;
+    font-size:1rem !important;
+    border:2px solid #cfcfcf !important;
+    border-radius:8px !important;
+    transition:border .2s,box-shadow .2s !important;
+}
+body #local-search-input input:focus{
+    border-color: #f6c74a !important;
+    box-shadow:0 0 0 3px rgba(245, 191, 73, 0.25) !important;
+    outline:0 !important;
+}
+
+
+/* ---------- result list ---------- */
+/* container stays scrollable */
+body #local-search-results{
+    margin-top:1.2rem !important;
+    max-height:530px !important;
+    overflow-y:auto !important;
+    scrollbar-width:thin !important;
+}
+/* each hit */
+body #local-search-results li{
+    padding:.7rem .6rem !important;
+    border-bottom:1px solid rgba(255,255,255,0.12) !important;
+}
+/* whole anchor = click target */
+body #local-search-results a{
+    display:block;
+    color:#EAEAF1 !important;               /* near-white text */
+    text-decoration:none !important;
+}
+/* hover state */
+body #local-search-results a:hover{
+    background:rgba(255,255,255,0.08) !important;
+    color:#FFCA3A !important;               /* matches focus ring */
+}
+/* highlighted keywords inside snippet */
+body #local-search-results .search-keyword{
+    color:#FFCA3A !important;
+    font-weight:700 !important;
+    background:rgba(255,202,58,0.18);
+    border-radius:3px; padding:0 2px;
+}
+
+/*⬇️将search框的 预览结果 用一个灰色的方框套住*/
+body #local-search-results{
+    background:rgba(255,255,255,0.05);
+    border-radius:10px;
+}
+
+/* 这里控制最下方文字，例如“3 results found” */
+body #local-search .search-dialog .search-result-stats{
+    color:#EAEAF1 !important;    /* near-white so it pops */
+    font-size:.85rem;
+    letter-spacing:.2px;
+    margin-top:.3rem;
+}
+
+
+/* 最后─── 👇 去除搜索结果的scrollbar！ kill the horizontal scrollbar inside results ─── */
+#local-search-results,
+#local-search-results .local-search-hit-item{
+    overflow-x:hidden; overflow-y:hidden !important;    /* no x/y-scroll => no bar */}
+/* ─── hide ALL scrollbars in the popup but keep scrolling ─── */
+#local-search .search-dialog,                 /* outer card          */
+#local-search .search-dialog * {              /* every descendant    */
+    scrollbar-width:none !important;            /* Firefox             */
+}
+#local-search .search-dialog::-webkit-scrollbar,
+#local-search .search-dialog *::-webkit-scrollbar{
+    width:0 !important; height:0 !important;    /* Chrome / Safari     */
+    display:none !important;
+}
