@@ -163,6 +163,33 @@ a:hover{ text-decoration: underline; }
     box-shadow: 0 16px 34px rgba(46, 41, 78, 0.30);
     background: #272244; /* slightly darker purple */
 }
+/* --- Chip icons 2026.1.15新增功能，在几个按钮中加入对应图标--- */
+.chip-icon{
+    width: 18px;
+    height: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+}
+.chip-icon svg{
+    width: 18px;
+    height: 18px;
+    display: block;
+}
+
+/* Better keyboard focus (professional + accessible) */
+.chip:focus-visible,
+.btn-ghost:focus-visible{
+    outline: 3px solid rgba(30,58,138,.25);  /* navy glow */
+    outline-offset: 2px;
+}
+
+/* Slightly crisper press state */
+.chip:active{
+    transform: translateY(0px);
+    box-shadow: var(--shadow);
+}
 
 
 /* ---------- News ---------- */
@@ -256,6 +283,14 @@ a:hover{ text-decoration: underline; }
     color: var(--muted);
     font-size: 14px;
     margin: 0;
+}
+.pub{
+    transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+}
+.pub:hover{
+    transform: translateY(-1px);
+    box-shadow: 0 14px 28px rgba(0,0,0,.10);
+    border-color: rgba(17,24,39,.14);
 }
 
 /* ---------- Responsive ---------- */
