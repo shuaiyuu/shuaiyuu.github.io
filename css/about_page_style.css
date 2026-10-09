@@ -1,341 +1,356 @@
-/* About page only */
-#body-wrap { background: transparent !important; }
-
-#body-wrap::before{
-    content:'';
-    position:fixed; inset:0;
-    background: none;
-    z-index:-2;
-    pointer-events:none;
+/* These shell adjustments only match a page containing our About wrapper.
+   Butterfly owns the navigation, background, footer, and dark-mode toggle. */
+.layout:has(.about-page) {
+  max-width: 1050px;
 }
 
-/* ---------- Minimal theme tokens ---------- */
-:root{
-    --page-bg: #ffffff;
-    --text: #111827;
-    --muted: #4b5563;
-    --muted-2: #6b7280;
-
-    /* deep purple headings/primary */
-    --accent: #2E294E;
-    --accent-soft: rgba(46, 41, 78, 0.10);
-
-    /* NEW: dark blue for links + buttons */
-    --navy: #1E3A8A;          /* dark blue */
-    --navy-soft: rgba(30,58,138,.12);
-
-    /* use navy for all links */
-    --link: #2563eb;
-
-    --border: rgba(17,24,39,.10);
-    --shadow: 0 1px 2px rgba(0,0,0,.06);
-    --shadow-strong: 0 10px 26px rgba(0,0,0,.10);
-    --radius: 14px;
-
-    /* NEW: typography */
-    --font-sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-    --font-serif: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman", Times, serif;
+.layout > #page:has(.about-page) {
+  padding: clamp(28px, 4vw, 48px);
+  border-radius: 6px;
+  box-shadow: 0 2px 12px rgba(15, 10, 34, 0.08);
 }
 
-
-body{
-    margin: 0;
-    padding: 0;
-    background: var(--page-bg);
-    color: var(--text);
-    font-family: var(--font-sans);
-    line-height: 1.72;                 /* slightly more editorial */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-    font-kerning: normal;
+#page:has(.about-page) > .page-title {
+  display: none;
 }
 
-
-/* ---------- Layout ---------- */
-.about{
-    width: min(920px, calc(100% - 48px));
-    margin: 0 auto;
-    padding: 52px 0 72px;
+/* Hide the blog badges only on About; retain Butterfly's copyright line. */
+#body-wrap:has(.about-page) #footer .footer_custom_text {
+  display: none;
 }
 
-.section{ margin-top: 34px; }
-
-/* Headings -> deep purple */
-.section-title{
-    font-size: 22px;
-    font-weight: 750;
-    letter-spacing: -0.01em;
-    margin: 0 0 12px;
-    color: var(--accent);
-    font-family: var(--font-serif);    /* NEW */
+#article-container .about-page {
+  --about-text: #302e3a;
+  --about-muted: #615c6c;
+  --about-publication-muted: #514d5c;
+  --about-muted-2: #6b7280;
+  --about-accent: #2e294e;
+  --about-link: #514579;
+  --about-border: rgba(46, 41, 78, 0.14);
+  --about-surface: #fff;
+  --about-soft: #f6f4f9;
+  --about-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --about-heading-font: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman", serif;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 12px 0 16px;
+  color: var(--about-text);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+  text-align: left;
+  overflow-wrap: break-word;
 }
 
-.section-head{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap: 16px;
+.about-page,
+.about-page * {
+  box-sizing: border-box;
 }
 
-.prose p{ margin: 0 0 12px; }
-.prose p:last-child{ margin-bottom: 0; }
-
-a{
-    color: var(--link);
-    text-decoration: none;
-    text-underline-offset: 3px;
-}
-a:hover{ text-decoration: underline; }
-
-/* ---------- Hero ---------- */
-.hero{
-    padding-bottom: 18px;
-    border-bottom: 1px solid var(--border);
+[data-theme="dark"] #article-container .about-page {
+  --about-text: #e3dfeb;
+  --about-muted: #bcb5cb;
+  --about-publication-muted: #c8c0d5;
+  --about-muted-2: #b3acc0;
+  --about-accent: #ddd2f4;
+  --about-link: #c9b5f0;
+  --about-border: rgba(215, 198, 245, 0.2);
+  --about-surface: #1e1a29;
+  --about-soft: #292334;
+  --about-shadow: none;
 }
 
-.hero-name{
-    font-size: 34px;
-    line-height: 1.08;
-    letter-spacing: -0.02em;           /* slightly calmer */
-    margin: 0 0 12px;
-    color: var(--accent);
-    font-family: var(--font-serif);    /* NEW */
-}
-.hero-line,
-.hero-line{ text-align: left; }
-.hero p:not(.hero-line){ text-align: justify; }
-.hero p{
-    font-size: 17px;
-    letter-spacing: -0.005em;
-}
-.hero p{
-    margin: 10px 0 0;
-    color: var(--text);
-    max-width: 76ch;
-}
-/* Hero text: clean justification on desktop, left on mobile */
-.hero p{
-    text-align: justify;
-    text-justify: inter-word;
-    hyphens: auto;
-    -webkit-hyphens: auto;
-    overflow-wrap: anywhere;
+#article-container .about-page a {
+  color: var(--about-link);
+  text-decoration: none;
+  text-underline-offset: 3px;
 }
 
-@media (max-width: 640px){
-    .hero p{ text-align: left; }
+#article-container .about-page a:hover {
+  text-decoration: underline;
 }
 
-
-.hero-line--muted{
-    color: var(--muted);
+.about-page a:focus-visible,
+.about-page button:focus-visible {
+  outline: 2px solid var(--about-link);
+  outline-offset: 4px;
 }
 
-.hero-links{
-    display:flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 18px;
+/* A quiet academic introduction, retaining the purple heading personality. */
+.about-page .about-hero {
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--about-border);
 }
 
-/* chips */
-.chip{
-    display:inline-flex;
-    align-items:center;
-    gap: 8px;
-    padding: 10px 16px;
-    border: 1px solid rgba(30,58,138,.22); /* navy border */
-    border-radius: 999px;
-    background: #fff;
-    box-shadow: var(--shadow);
-    font-size: 15px;
-    font-weight: 650;
-    color: var(--navy);                   /* navy text */
-    text-decoration: none;
-    transition: transform .12s ease, box-shadow .12s ease, background-color .12s ease, border-color .12s ease;
-}
-.chip:hover{
-    text-decoration:none;
-    transform: translateY(-1px);
-    box-shadow: 0 10px 22px rgba(30,58,138,.10);
-    border-color: rgba(30,58,138,.35);
-    background: rgba(30,58,138,.03);
+#article-container .about-page .hero-name {
+  margin: 0 0 12px;
+  color: var(--about-accent);
+  font-family: var(--about-heading-font);
+  font-size: clamp(34px, 4vw, 46px);
+  font-weight: 700;
+  line-height: 1.14;
+  letter-spacing: -0.025em;
 }
 
-
-/* Primary (Email) chip: more “designed” */
-.chip--primary{
-    background: var(--accent);
-    color: #fff;
-    border-color: transparent;
-    box-shadow: 0 12px 26px rgba(46, 41, 78, 0.24);
-}
-.chip--primary:hover{
-    transform: translateY(-1px);
-    box-shadow: 0 16px 34px rgba(46, 41, 78, 0.30);
-    background: #272244; /* slightly darker purple */
-}
-/* --- Chip icons 2026.1.15新增功能，在几个按钮中加入对应图标--- */
-.chip-icon{
-    width: 18px;
-    height: 18px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    flex: 0 0 auto;
-}
-.chip-icon svg{
-    width: 18px;
-    height: 18px;
-    display: block;
+#article-container .about-page .hero-subtitle {
+  margin: 0 0 4px;
+  color: var(--about-text);
+  font-size: 18px;
+  font-weight: 550;
+  line-height: 1.5;
 }
 
-/* Better keyboard focus (professional + accessible) */
-.chip:focus-visible,
-.btn-ghost:focus-visible{
-    outline: 3px solid rgba(30,58,138,.25);  /* navy glow */
-    outline-offset: 2px;
+#article-container .about-page .hero-identity {
+  margin: 0;
+  color: var(--about-muted);
+  font-size: 14px;
+  letter-spacing: 0.025em;
 }
 
-/* Slightly crisper press state */
-.chip:active{
-    transform: translateY(0px);
-    box-shadow: var(--shadow);
+.about-page .hero-introduction {
+  max-width: 78ch;
+  margin-top: 26px;
 }
 
-
-/* ---------- News ---------- */
-.btn-ghost{
-    border: 1px solid rgba(46, 41, 78, 0.18);
-    background: #fff;
-    color: var(--accent);
-    padding: 8px 14px;
-    border-radius: 999px;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 650;
-    box-shadow: var(--shadow);
-    transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
-}
-.btn-ghost:hover{
-    transform: translateY(-1px);
-    border-color: rgba(46, 41, 78, 0.28);
-    box-shadow: 0 8px 18px rgba(0,0,0,.10);
+#article-container .about-page .hero-introduction p {
+  margin: 0 0 14px;
 }
 
-.list{
-    list-style: none;
-    padding: 0;
-    margin: 12px 0 0;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    overflow: hidden;
-    background: #fff;
-    box-shadow: var(--shadow);
-}
-.list li{
-    padding: 12px 14px;
-    border-top: 1px solid var(--border);
-    background: #fff;
-}
-.list li:first-child{ border-top: none; }
-
-.kicker{
-    display:inline-block;
-    min-width: 110px;
-    color: var(--muted-2);
-    font-weight: 700;
+#article-container .about-page .hero-introduction p:last-child {
+  margin-bottom: 0;
 }
 
-/* ---------- Publications ---------- */
-.publications{
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
+.about-page .hero-introduction a {
+  font-weight: 600;
 }
 
-.pub{
-    display:flex;
-    gap: 16px;
-    padding: 14px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    background: #fff;
-    box-shadow: var(--shadow);
+.about-page .hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
 }
 
-.pub-thumb{
-    flex: 0 0 auto;
-    width: 92px;
-    height: 92px;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid var(--border);
-}
-.pub-thumb img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display:block;
-}
-
-.pub-body{ min-width: 0; }
-.pub-title{
-    font-weight: 750;
-    margin: 0 0 4px;
-    line-height: 1.35;
-    color: var(--accent);
-}
-.pub-meta{
-    color: var(--muted);
-    font-size: 14px;
-    margin: 0 0 6px;
-}
-.pub-desc{
-    color: var(--muted);
-    font-size: 14px;
-    margin: 0;
-}
-.pub{
-    transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
-}
-.pub:hover{
-    transform: translateY(-1px);
-    box-shadow: 0 14px 28px rgba(0,0,0,.10);
-    border-color: rgba(17,24,39,.14);
+#article-container .about-page .profile-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 38px;
+  padding: 5px 12px;
+  border: 1px solid var(--about-border);
+  border-radius: 4px;
+  background: var(--about-surface);
+  color: var(--about-accent);
+  font-size: 14px;
+  font-weight: 550;
+  line-height: 1.5;
 }
 
-/* ---------- Responsive ---------- */
-@media (max-width: 640px){
-    .about{ width: min(920px, calc(100% - 28px)); padding: 38px 0 60px; }
-    .hero-name{ font-size: 34px; }
-    .hero-line{ font-size: 16px; }
-    .chip{ padding: 9px 14px; font-size: 14px; }
+#article-container .about-page .profile-link:hover {
+  background: var(--about-soft);
+  border-color: var(--about-link);
+  text-decoration: none;
 }
 
-
-/* ---- About page overrides (keep chips navy, links slightly softer) ---- */
-/* Use a more pleasant link blue for inline text (advisor names etc.) */
-.about a{
-    color: var(--link) !important;
-}
-.about a:hover{
-    text-decoration: underline;
+.about-page .chip-icon,
+.about-page .chip-icon svg {
+  display: block;
+  flex: 0 0 auto;
+  width: 16px;
+  height: 16px;
 }
 
-/* Chips should be navy (except primary email) */
-.about .chip{
-    color: var(--navy) !important;
-}
-.about .chip--primary{
-    color: #fff !important;
+.about-page .section {
+  margin-top: 34px;
 }
 
-/* Optional: make advisor names slightly stronger without changing all links */
-.about a.link-strong{
-    color: var(--navy) !important;   /* or use a slightly different token */
-    font-weight: 650;
+#article-container .about-page .section-title {
+  margin: 0 0 12px;
+  color: var(--about-accent);
+  font-family: var(--about-heading-font);
+  font-size: 22px;
+  font-weight: 750;
+  letter-spacing: -0.01em;
+  line-height: 1.5;
 }
 
+/* Preserve the News container, date layout, and Hide / Show control. */
+.about-page .news-section {
+  font-size: 14px;
+  line-height: 1.72;
+}
 
+.about-page .section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.about-page .btn-ghost {
+  border: 1px solid var(--about-border);
+  background: var(--about-surface);
+  color: var(--about-accent);
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 650;
+  box-shadow: var(--about-shadow);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
+}
+
+.about-page .btn-ghost:hover {
+  transform: translateY(-1px);
+  border-color: var(--about-link);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+}
+
+#article-container .about-page .list {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+  border: 1px solid var(--about-border);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--about-surface);
+  box-shadow: var(--about-shadow);
+}
+
+.about-page .list li {
+  padding: 12px 14px;
+  border-top: 1px solid var(--about-border);
+  background: var(--about-surface);
+}
+
+.about-page .list li:first-child {
+  border-top: none;
+}
+
+.about-page .kicker {
+  display: inline-block;
+  min-width: 110px;
+  color: var(--about-muted-2);
+  font-weight: 700;
+}
+
+/* Equal thumbnail columns, complete images, and top-aligned information. */
+.about-page .selected-publications {
+  margin-top: 48px;
+}
+
+.about-page .publication-item {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr);
+  align-items: start;
+  gap: 26px;
+  padding: 26px 0;
+}
+
+.about-page .publication-item + .publication-item {
+  border-top: 1px solid var(--about-border);
+}
+
+.about-page .publication-thumbnail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 144px;
+  padding: 7px;
+  border: 1px solid var(--about-border);
+  border-radius: 3px;
+  background: #f8f7fa;
+}
+
+#article-container .about-page .publication-thumbnail img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  margin: 0;
+  object-fit: contain;
+  filter: none;
+}
+
+.about-page .publication-content {
+  min-width: 0;
+}
+
+#article-container .about-page .publication-title {
+  margin: 0 0 9px;
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 650;
+  line-height: 1.45;
+}
+
+#article-container .about-page .publication-title a {
+  color: var(--about-accent);
+}
+
+#article-container .about-page .publication-authors,
+#article-container .about-page .publication-venue {
+  margin: 0 0 5px;
+  color: var(--about-publication-muted);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.about-page .publication-authors strong {
+  color: var(--about-text);
+  font-weight: 650;
+}
+
+.about-page .publication-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+#article-container .about-page .publication-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 60px;
+  min-height: 29px;
+  padding: 3px 10px;
+  border: 1px solid var(--about-border);
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 550;
+  line-height: 1.6;
+}
+
+#article-container .about-page .publication-links a:hover {
+  background: var(--about-soft);
+  border-color: var(--about-link);
+  text-decoration: none;
+}
+
+@media (max-width: 600px) {
+  .layout > #page:has(.about-page) {
+    padding: 28px 20px;
+  }
+
+  #article-container .about-page {
+    padding-top: 4px;
+  }
+
+  .about-page .publication-item {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+
+  #article-container .about-page .publication-title {
+    font-size: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-page .btn-ghost {
+    transition: none;
+  }
+}
