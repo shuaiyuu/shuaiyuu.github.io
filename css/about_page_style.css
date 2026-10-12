@@ -14,8 +14,9 @@
   display: none;
 }
 
-/* Hide the blog badges only on About; retain Butterfly's copyright line. */
-#body-wrap:has(.about-page) #footer .footer_custom_text {
+/* Hide the floating Settings and Back to Top controls only on About. */
+#body-wrap:has(.about-page) ~ #rightside #rightside-config,
+#body-wrap:has(.about-page) ~ #rightside #go-up {
   display: none;
 }
 
@@ -168,11 +169,11 @@
 #article-container .about-page .section-title {
   margin: 0 0 12px;
   color: var(--about-accent);
-  font-family: var(--about-heading-font);
-  font-size: 22px;
-  font-weight: 750;
-  letter-spacing: -0.01em;
-  line-height: 1.5;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: clamp(22px, 2.3vw, 24px);
+  font-weight: 500;
+  letter-spacing: normal;
+  line-height: 1.45;
 }
 
 /* Preserve the News container, date layout, and Hide / Show control. */
