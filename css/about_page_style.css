@@ -222,7 +222,7 @@
   line-height: 1.3;
 }
 
-/* Preserve the News container, date layout, and Hide / Show control. */
+/* Preserve the News container and Hide / Show control. */
 .about-page .news-section {
   font-size: 14px;
   line-height: 1.72;
@@ -294,11 +294,29 @@
   border-top: none;
 }
 
-.about-page .kicker {
+.about-page .news-section .list li {
+  display: grid;
+  grid-template-columns: 132px minmax(0, 1fr);
+  column-gap: 16px;
+  align-items: start;
+}
+
+.about-page .news-section .news-description {
+  min-width: 0;
+}
+
+.about-page .news-section .kicker {
   display: inline-block;
-  min-width: 110px;
+  min-width: 0;
   color: var(--about-muted-2);
   font-weight: 700;
+}
+
+@media (max-width: 600px) {
+  .about-page .news-section .list li {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 4px;
+  }
 }
 
 /* Equal thumbnail columns, complete images, and top-aligned information. */
