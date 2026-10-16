@@ -83,7 +83,7 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) 208px;
   align-items: start;
-  gap: 36px;
+  gap: clamp(24px, 3vw, 36px);
   padding-bottom: 32px;
   border-bottom: 1px solid var(--about-border);
 }
@@ -103,7 +103,7 @@
 }
 
 .about-page .hero-introduction {
-  max-width: 68ch;
+  max-width: 100%;
   margin-top: 20px;
 }
 
