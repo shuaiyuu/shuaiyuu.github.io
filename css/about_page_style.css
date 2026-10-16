@@ -296,7 +296,7 @@
 
 .about-page .news-section .list li {
   display: grid;
-  grid-template-columns: 132px minmax(0, 1fr);
+  grid-template-columns: 88px minmax(0, 1fr);
   column-gap: 16px;
   align-items: start;
 }
