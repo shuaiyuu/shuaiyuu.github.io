@@ -102,14 +102,6 @@
   letter-spacing: normal;
 }
 
-#article-container .about-page .hero-identity {
-  margin: 0;
-  color: var(--about-muted);
-  font-size: 14px;
-  line-height: 1.65;
-  letter-spacing: 0.015em;
-}
-
 .about-page .hero-introduction {
   max-width: 68ch;
   margin-top: 20px;
@@ -189,6 +181,12 @@
   object-fit: cover;
   object-position: center 20%;
   filter: none;
+}
+
+@media (min-width: 851px) {
+  .about-page .about-hero {
+    padding-top: 12px;
+  }
 }
 
 @media (max-width: 850px) {
