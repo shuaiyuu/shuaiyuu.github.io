@@ -228,6 +228,25 @@
   line-height: 1.72;
 }
 
+.about-page .news-section .news-metric {
+  display: inline-block;
+  margin-inline-start: 4px;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: #fff0f3;
+  color: #8f2542;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+
+[data-theme="dark"] .about-page .news-section .news-metric {
+  background: #3e2530;
+  color: #ffd1dc;
+}
+
 .about-page .section-head {
   display: flex;
   align-items: center;
