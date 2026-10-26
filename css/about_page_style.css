@@ -247,6 +247,29 @@
   color: #ffd1dc;
 }
 
+.about-page .news-section .news-industry-badge {
+  display: inline-block;
+  margin-inline-start: 4px;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: #eef0f7;
+  color: #424b70;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+
+[data-theme="dark"] .about-page .news-section .news-industry-badge {
+  background: #293247;
+  color: #d5ddf4;
+}
+
+.about-page .news-section .news-organization {
+  font-weight: 600;
+}
+
 .about-page .section-head {
   display: flex;
   align-items: center;
